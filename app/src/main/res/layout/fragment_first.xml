@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/Startbg"
     tools:context=".FirstFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,25 +16,49 @@
             android:id="@+id/button_first"
             android:layout_width="177dp"
             android:layout_height="58dp"
-            android:layout_marginTop="468dp"
-            android:text="@string/next"
+            android:fontFamily="@font/KavoonRegular"
+            android:layout_marginTop="448dp"
+            android:text="PLAY"
             android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_second"
+            android:layout_width="139dp"
+            android:layout_height="47dp"
+            android:fontFamily="@font/KavoonRegular"
+            android:layout_marginTop="504dp"
+            android:text="Exit"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textview_first"
-            android:layout_width="311dp"
-            android:layout_height="137dp"
-            android:fontFamily="sans-serif-black"
+            android:layout_width="363dp"
+            android:layout_height="207dp"
+            android:fontFamily="@font/KavoonRegular"
+            android:shadowColor="#FF0000"
+            android:shadowDx="15"
+            android:shadowDy="20"
+            android:shadowRadius="30"
             android:text="@string/matching_ngame"
             android:textAlignment="center"
-            android:textSize="50sp"
+            android:textColor="@color/white"
+            android:textSize="73sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.463" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
