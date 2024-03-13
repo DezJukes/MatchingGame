@@ -10,4 +10,5 @@
     <string name="lorem_ipsum">
         Hello user!
     </string>
+    <string name="matching_ngame">Matching\nGame</string>
 </resources>
