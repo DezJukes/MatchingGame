@@ -5,7 +5,7 @@
     <string name="first_fragment_label">Matching Game</string>
     <string name="second_fragment_label">Find the match!</string>
     <string name="next">Play</string>
-    <string name="previous">Home</string>
+    <string name="previous"></string>
 
     <string name="lorem_ipsum">
         Hello user!

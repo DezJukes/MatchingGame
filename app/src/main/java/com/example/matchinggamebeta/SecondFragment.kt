@@ -98,7 +98,7 @@ class SecondFragment : Fragment() {
     private fun updateViews() {
         cards.forEachIndexed { index, card ->
             val button = buttons[index]
-            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.androidback)
+            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.question_mark)
         }
     }
 
