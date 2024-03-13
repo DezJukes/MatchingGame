@@ -19,14 +19,13 @@
             android:text="@string/next"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textview_first"
-            android:layout_width="261dp"
-            android:layout_height="140dp"
+            android:layout_width="311dp"
+            android:layout_height="137dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/matching_ngame"
             android:textAlignment="center"
