@@ -64,10 +64,10 @@ class SecondFragment : Fragment() {
         )
 
         val images = mutableListOf(
-            R.drawable.apple, R.drawable.avocado, R.drawable.banana,
-            R.drawable.cherry, R.drawable.eggplant, R.drawable.grape,
-            R.drawable.orange, R.drawable.pineapple, R.drawable.strawberry,
-            R.drawable.watermelon)
+            R.drawable.card_apple, R.drawable.card_avocado, R.drawable.card_banana,
+            R.drawable.card_cherry, R.drawable.card_mango, R.drawable.card_grape,
+            R.drawable.card_orange, R.drawable.card_pineapple, R.drawable.card_strawberry,
+            R.drawable.card_watermelon)
 
         images.addAll(images)
         images.shuffle()
@@ -94,7 +94,7 @@ class SecondFragment : Fragment() {
     private fun updateViews() {
         cards.forEachIndexed { index, card ->
             val button = buttons[index]
-            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.question_mark)
+            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.back_basket)
         }
     }
 
@@ -132,6 +132,9 @@ class SecondFragment : Fragment() {
             matchedCardCount += 2
         } else {
             // If the cards don't match, flip them back after a short delay
+            score -= 2
+            if (score < 0) score = 0
+            binding.textScoreCounter.text = "$score"
             val handler = Handler(Looper.getMainLooper())
             handler.postDelayed({
                 cards[position1].isFaceUp = false
