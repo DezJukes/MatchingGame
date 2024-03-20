@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.matchinggamebeta.databinding.FragmentSecondBinding
 import android.app.AlertDialog
+import android.media.MediaPlayer
 import android.os.*
 import android.view.*
 import android.widget.*
@@ -34,6 +35,8 @@ class SecondFragment : Fragment() {
     private var startTimeMillis: Long = 0
     private var matchedCardCount = 0
     private var _binding: FragmentSecondBinding? = null
+    private lateinit var backgroundMusicPlayer: MediaPlayer
+    private lateinit var cardClickSoundPlayer: MediaPlayer
 
     private val binding get() = _binding!!
 
@@ -49,6 +52,12 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        backgroundMusicPlayer = MediaPlayer.create(requireContext(), R.raw.bgm_menu)
+        backgroundMusicPlayer.isLooping = true
+        backgroundMusicPlayer.start()
+
+        cardClickSoundPlayer = MediaPlayer.create(requireContext(), R.raw.card_flip)
 
         initializeViews()
         startTimer()
@@ -121,6 +130,7 @@ class SecondFragment : Fragment() {
         card.isFaceUp = !card.isFaceUp
         flips++
         binding.textFlipsCounter.text = "$flips"
+        playCardClickSound()
     }
 
     private fun checkForMatch(position1: Int, position2: Int){
@@ -148,6 +158,7 @@ class SecondFragment : Fragment() {
             countDownTimer.cancel()
             // Ask if want to play again
             showPlayAgainDialog()
+            backgroundMusicPlayer.pause()
         }
     }
 
@@ -170,10 +181,12 @@ class SecondFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Congratulations!")
         builder.setMessage("You've matched all the cards! Would you like to play again?")
+        playGameCompletedSound()
 
         builder.setPositiveButton("Yes") { _, _ ->
             // Reset the game
             resetGame()
+
         }
 
         builder.setNegativeButton("No") { _, _ ->
@@ -196,6 +209,10 @@ class SecondFragment : Fragment() {
         binding.textFlipsCounter.text = "$flips"
         binding.textScoreCounter.text = "$score"
         initializeViews()
+        if(!backgroundMusicPlayer.isPlaying){
+            backgroundMusicPlayer.seekTo(0)
+            backgroundMusicPlayer.start()
+        }
         startTimer()
     }
 
@@ -212,6 +229,28 @@ class SecondFragment : Fragment() {
         }
         startTimeMillis = System.currentTimeMillis()
         countDownTimer.start()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        // Release MediaPlayer resources when the fragment is destroyed
+        backgroundMusicPlayer.release()
+        cardClickSoundPlayer.release()
+    }
+
+    private fun playCardClickSound() {
+        cardClickSoundPlayer.seekTo(0) // Reset sound to start
+        cardClickSoundPlayer.start()
+    }
+
+    private fun playGameCompletedSound(){
+        val gameCompletedSoundPlayer = MediaPlayer.create(requireContext(), R.raw.game_completed)
+        gameCompletedSoundPlayer.start()
+
+        gameCompletedSoundPlayer.setOnCompletionListener { mediaPlayer ->
+            mediaPlayer.release()
+        }
     }
 
 }
