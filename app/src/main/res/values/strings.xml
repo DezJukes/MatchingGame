@@ -2,13 +2,14 @@
     <string name="app_name">Matching Game Beta</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Matching Game</string>
+    <string name="first_fragment_label" color="white">Fruity Match</string>
     <string name="second_fragment_label">Find the match!</string>
+    <string name="about_us_label">About Us</string>
     <string name="next">Play</string>
     <string name="previous"></string>
 
     <string name="lorem_ipsum">
         Hello user!
     </string>
-    <string name="matching_ngame">Matching\nGame</string>
+    <string name="matching_ngame">Fruity\nMatch!</string>
 </resources>
