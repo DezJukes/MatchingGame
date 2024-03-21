@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/startbg"
+    android:background="@drawable/mainmenu_bg"
     tools:context=".FirstFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
