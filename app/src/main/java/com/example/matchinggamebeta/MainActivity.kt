@@ -1,5 +1,6 @@
 package com.example.matchinggamebeta
 
+import android.graphics.Color
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.matchinggamebeta.databinding.ActivityMainBinding
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -32,8 +35,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+        //menuInflater.inflate(R.menu.menu_main, menu)
+        return false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
