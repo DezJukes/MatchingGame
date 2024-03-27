@@ -27,15 +27,10 @@ import com.example.matchinggamebeta.utils.DEFAULT_ICONS
  */
 class SecondFragment : Fragment() {
 
-    private lateinit var buttons: List<ImageButton>
-    private lateinit var cards: List<MemoryCard>
-    private var indexOfSingleSelectedCard: Int? = null
     private var score = 0
     private var flips = 0
     private lateinit var textTimerCount: TextView
     private lateinit var countDownTimer: CountDownTimer
-    private var startTimeMillis: Long = 0
-    private var matchedCardCount = 0
     private var _binding: FragmentSecondBinding? = null
     private lateinit var backgroundMusicPlayer: MediaPlayer
     private lateinit var cardClickSoundPlayer: MediaPlayer
@@ -165,7 +160,9 @@ class SecondFragment : Fragment() {
             }
 
             override fun onFinish() {
-                backgroundMusicPlayer.pause()
+                if (backgroundMusicPlayer.isPlaying) {
+                    backgroundMusicPlayer.pause()
+                }
                 gameFinished = true
                 playGameCompletedSound()
                 val showPopUp = popUpScreen()
