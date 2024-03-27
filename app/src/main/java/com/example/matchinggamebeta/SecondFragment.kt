@@ -4,27 +4,29 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.example.matchinggamebeta.databinding.FragmentSecondBinding
 import android.app.AlertDialog
 import android.media.MediaPlayer
-import android.os.*
-import android.view.*
-import android.widget.*
-import androidx.fragment.app.*
+import android.widget.Adapter
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.matchinggamebeta.models.BoardSize
+import com.example.matchinggamebeta.models.MemoryGame
+import com.example.matchinggamebeta.utils.DEFAULT_ICONS
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
+
     private lateinit var buttons: List<ImageButton>
     private lateinit var cards: List<MemoryCard>
     private var indexOfSingleSelectedCard: Int? = null
@@ -38,6 +40,13 @@ class SecondFragment : Fragment() {
     private lateinit var backgroundMusicPlayer: MediaPlayer
     private lateinit var cardClickSoundPlayer: MediaPlayer
 
+    private lateinit var rvBoard: RecyclerView
+    private lateinit var resetGame:Button
+    private lateinit var memoryGame: MemoryGame
+    private lateinit var adapter: MemoryBoardAdapter
+    private var boardSize = BoardSize.EASY
+    private var gameFinished = false
+    private var isBackgroundMusicPlaying = false
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -52,183 +61,122 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvBoard = binding.rvBoard
 
         backgroundMusicPlayer = MediaPlayer.create(requireContext(), R.raw.bgm_menu)
         backgroundMusicPlayer.isLooping = true
-        backgroundMusicPlayer.start()
 
         cardClickSoundPlayer = MediaPlayer.create(requireContext(), R.raw.card_flip)
 
-        initializeViews()
-        startTimer()
+        val boardSize = arguments?.getSerializable("boardSize") as BoardSize
+        setupBoard(boardSize)
 
+        startTimer(boardSize)
+        resetGame = binding.btnReset
+        resetGame.setOnClickListener {
+            setupBoard(boardSize)
+            resetGameOverall()
+            countDownTimer.cancel()
+            startTimer(boardSize)
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        if (!isBackgroundMusicPlaying) {
+            backgroundMusicPlayer.start()
+            isBackgroundMusicPlaying = true
+        }
     }
 
-    private fun initializeViews(){
-        buttons = listOf(
-            binding.imageButton1, binding.imageButton2, binding.imageButton3, binding.imageButton4, binding.imageButton5,
-            binding.imageButton6, binding.imageButton7, binding.imageButton8, binding.imageButton9, binding.imageButton10,
-            binding.imageButton11, binding.imageButton12, binding.imageButton13, binding.imageButton14, binding.imageButton15,
-            binding.imageButton16, binding.imageButton17, binding.imageButton18, binding.imageButton19, binding.imageButton20
-        )
-
-        val images = mutableListOf(
-            R.drawable.card_apple, R.drawable.card_avocado, R.drawable.card_banana,
-            R.drawable.card_cherry, R.drawable.card_mango, R.drawable.card_grape,
-            R.drawable.card_orange, R.drawable.card_pineapple, R.drawable.card_strawberry,
-            R.drawable.card_watermelon)
-
-        images.addAll(images)
-        images.shuffle()
-
-        cards = buttons.indices.map { index ->
-            MemoryCard(images[index])
-
+    override fun onPause() {
+        super.onPause()
+        if (isBackgroundMusicPlaying) {
+            backgroundMusicPlayer.pause()
+            isBackgroundMusicPlaying = false
         }
+    }
 
-        buttons.forEachIndexed{ index, button ->
-            button.setOnClickListener{
-                //update models
-                updateModels(index)
-                updateViews()
-            }
-        }
-
-        textTimerCount = binding.textTimerCount
-        binding.textScoreCounter.text = "$score"
+    private fun resetGameOverall() {
+        flips = 0
+        score = 0
         binding.textFlipsCounter.text = "$flips"
-
+        binding.textScoreCounter.text = "$score"
+        gameFinished = false
     }
 
-    private fun updateViews() {
-        cards.forEachIndexed { index, card ->
-            val button = buttons[index]
-            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.back_basket)
-        }
+    private fun setupBoard(boardSize: BoardSize) {
+        this.boardSize = boardSize
+
+        memoryGame = MemoryGame(boardSize)
+
+        adapter = MemoryBoardAdapter(requireContext(), boardSize, memoryGame.cards, object : MemoryBoardAdapter.CardClickListener {
+            override fun onCardClicked(position: Int) {
+                updateGameWithFlip(position)
+            }
+
+        })
+        rvBoard.adapter = adapter
+        rvBoard.setHasFixedSize(true)
+        rvBoard.layoutManager = GridLayoutManager(requireContext(), boardSize.getWidth())
     }
 
-    private fun updateModels(position:Int){
-        val card = cards[position]
-
+    private fun updateGameWithFlip(position: Int) {
         //Error checking
-        if(card.isFaceUp){
+        if (memoryGame.haveWonGame()){
             return
         }
-        //three cases
-        // 0 cards previous flipped over => flip over the selected card
-        // 1 card previous flipped over => flip over the selected card + check if the images match
-        // 2 cards previous flipped over => restore the cards + flip over the selected card
-        if(indexOfSingleSelectedCard == null){
-            //0 or 2 selected cards
-            indexOfSingleSelectedCard = position
-            restoreCards()
-        } else {
-            // exactly 1 cards was selected previously
-            checkForMatch(indexOfSingleSelectedCard!!, position)
-            indexOfSingleSelectedCard = null
+        if (memoryGame.isFaceUp(position)){
+            return
         }
-        card.isFaceUp = !card.isFaceUp
+        if (gameFinished){
+            return
+        }
         flips++
         binding.textFlipsCounter.text = "$flips"
-        playCardClickSound()
-    }
-
-    private fun checkForMatch(position1: Int, position2: Int){
-        if(cards[position1].identifier == cards[position2].identifier){
-            cards[position1].isMatched = true
-            cards[position2].isMatched = true
+        if(memoryGame.flipCard(position)){
             score+=5
             binding.textScoreCounter.text = "$score"
-            matchedCardCount += 2
-        } else {
-            // If the cards don't match, flip them back after a short delay
-            score -= 2
-            if (score < 0) score = 0
-            binding.textScoreCounter.text = "$score"
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({
-                cards[position1].isFaceUp = false
-                cards[position2].isFaceUp = false
-                updateViews()
-            }, 500) // Adjust the delay time as needed
         }
+        adapter.notifyDataSetChanged()
 
-        if (matchedCardCount == cards.size) {
-            // Stop the timer when all cards are matched
-            countDownTimer.cancel()
-            // Ask if want to play again
-            showPlayAgainDialog()
-            backgroundMusicPlayer.pause()
+        if (memoryGame.haveWonGame()){
+            shuffleCardsAgain()
         }
     }
 
-    private fun restoreCards(){
-        for(card in cards){
-            if(!card.isMatched){
-                card.isFaceUp = false
-            }
-        }
+    private fun shuffleCardsAgain() {
+        setupBoard(boardSize)
+        adapter.notifyDataSetChanged()
     }
 
-    private fun updateTimer(elapsedTimeMillis: Long) {
-        val seconds = (elapsedTimeMillis / 1000).toInt()
-        val minutes = seconds / 60
-        val remainingSeconds = seconds % 60
-        textTimerCount.text = String.format("%02d:%02d", minutes, remainingSeconds)
-    }
-
-    private fun showPlayAgainDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Congratulations!")
-        builder.setMessage("You've matched all the cards! Would you like to play again?")
-        playGameCompletedSound()
-
-        builder.setPositiveButton("Yes") { _, _ ->
-            // Reset the game
-            resetGame()
-
+    private fun startTimer(boardSize: BoardSize) {
+        val timerDuration = when (boardSize) {
+            BoardSize.EASY -> 60_000L // 1 min
+            BoardSize.MEDIUM -> 105_000L // 1 min 45 secs
+            BoardSize.DIFFICULT -> 120_000L // 2 min
         }
 
-        builder.setNegativeButton("No") { _, _ ->
-            // Exit the game or perform any other action
-        }
-
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    private fun resetGame() {
-        // Reset game variables, shuffle cards, start timer, etc.
-        matchedCardCount = 0
-        score = 0
-        flips = 0
-        cards.forEach { it.reset() }
-        indexOfSingleSelectedCard = null
-        updateViews()
-        cards.forEach { it.isMatched = false }
-        binding.textFlipsCounter.text = "$flips"
-        binding.textScoreCounter.text = "$score"
-        initializeViews()
-        if(!backgroundMusicPlayer.isPlaying){
-            backgroundMusicPlayer.seekTo(0)
-            backgroundMusicPlayer.start()
-        }
-        startTimer()
-    }
-
-    private fun startTimer() {
-        countDownTimer = object : CountDownTimer(Long.MAX_VALUE, 1000) {
+        countDownTimer = object : CountDownTimer(timerDuration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                val elapsedTimeMillis = System.currentTimeMillis() - startTimeMillis
-                updateTimer(elapsedTimeMillis)
+                val secondsLeft = millisUntilFinished / 1000
+                val minutes = secondsLeft / 60
+                val seconds = secondsLeft % 60
+                binding.textTimerCount.text = String.format("%02d:%02d", minutes, seconds)
             }
 
             override fun onFinish() {
-                // Timer finished (not relevant for increasing timer)
+                backgroundMusicPlayer.pause()
+                gameFinished = true
+                playGameCompletedSound()
+                val showPopUp = popUpScreen()
+
+                val args = Bundle()
+                args.putInt(popUpScreen.ARG_SCORE, score) // Pass the score here
+                showPopUp.arguments = args
+
+                showPopUp.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
             }
-        }
-        startTimeMillis = System.currentTimeMillis()
-        countDownTimer.start()
+        }.start()
     }
 
     override fun onDestroyView() {

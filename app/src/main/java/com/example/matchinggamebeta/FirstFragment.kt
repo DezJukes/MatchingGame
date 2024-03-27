@@ -18,6 +18,7 @@ class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private lateinit var backgroundMusicPlayer: MediaPlayer
     private lateinit var buttonSoundClick: MediaPlayer
+    private var isBackgroundMusicPlaying = false
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -38,20 +39,33 @@ class FirstFragment : Fragment() {
 
         backgroundMusicPlayer = MediaPlayer.create(requireContext(), R.raw.bgm_menu1)
         backgroundMusicPlayer.isLooping = true // Loop the music
-        backgroundMusicPlayer.start()
 
         buttonSoundClick = MediaPlayer.create(requireContext(), R.raw.press)
 
         binding.buttonFirst.setOnClickListener {
             buttonSoundClick.start()
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_levelSelect)
         }
         binding.buttonSecond.setOnClickListener {
             buttonSoundClick.start()
             exitProcess(0)
         }
     }
+    override fun onResume() {
+        super.onResume()
+        if (!isBackgroundMusicPlaying) {
+            backgroundMusicPlayer.start()
+            isBackgroundMusicPlaying = true
+        }
+    }
 
+    override fun onPause() {
+        super.onPause()
+        if (isBackgroundMusicPlaying) {
+            backgroundMusicPlayer.pause()
+            isBackgroundMusicPlaying = false
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
