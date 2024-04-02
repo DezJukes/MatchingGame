@@ -8,25 +8,16 @@
     tools:layout_editor_absoluteX="-16dp"
     tools:layout_editor_absoluteY="246dp">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/fragment_second"
-        android:layout_width="414dp"
-        android:layout_height="733dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvCongrats"
         android:layout_width="381dp"
         android:layout_height="489dp"
         android:foregroundGravity="center"
         app:cardBackgroundColor="#9C83DD"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/LinearLayout"
@@ -36,6 +27,14 @@
             android:layout_marginTop="8dp"
             android:gravity="center|fill_vertical"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCongrats"
+                android:layout_width="287dp"
+                android:layout_height="93dp"
+                android:text="CONGRATS!"
+                android:textAlignment="center"
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/tvScore"
@@ -81,14 +80,6 @@
                 android:text="Leaderboard" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvCongrats"
-            android:layout_width="287dp"
-            android:layout_height="93dp"
-            android:text="CONGRATS!"
-            android:textAlignment="center"
-            android:textSize="34sp" />
 
     </androidx.cardview.widget.CardView>
 

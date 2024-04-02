@@ -14,6 +14,15 @@
         <action
             android:id="@+id/action_FirstFragment_to_levelSelect"
             app:destination="@id/levelSelect" />
+        <action
+            android:id="@+id/action_FirstFragment_to_howToPlay"
+            app:destination="@id/howToPlay" />
+        <action
+            android:id="@+id/action_FirstFragment_to_aboutUs"
+            app:destination="@id/aboutUs" />
+        <action
+            android:id="@+id/action_FirstFragment_to_leaderboard"
+            app:destination="@id/leaderboard" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -21,14 +30,15 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
         <action
+            android:id="@+id/action_SecondFragment_to_leaderboard"
+            app:destination="@id/leaderboard" />
+        <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
         <action
-            android:id="@+id/action_SecondFragment_to_popUpScreen"
-            app:destination="@id/popUpScreen" />
-        <action
-            android:id="@+id/action_SecondFragment_to_leaderboard"
-            app:destination="@id/leaderboard" />
+            android:id="@+id/action_SecondFragment_pop"
+            app:popUpTo="@id/SecondFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/levelSelect"
@@ -38,19 +48,40 @@
         <action
             android:id="@+id/action_levelSelect_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_levelSelect_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
     <dialog
         android:id="@+id/popUpScreen"
         android:name="com.example.matchinggamebeta.popUpScreen"
         android:label="fragment_pop_up_screen"
-        tools:layout="@layout/fragment_pop_up_screen" >
-        <action
-            android:id="@+id/action_popUpScreen_to_leaderboard"
-            app:destination="@id/leaderboard" />
-    </dialog>
+        tools:layout="@layout/fragment_pop_up_screen" />
     <fragment
         android:id="@+id/leaderboard"
         android:name="com.example.matchinggamebeta.Leaderboard"
         android:label="fragment_leaderboard"
-        tools:layout="@layout/fragment_leaderboard" />
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboard_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/howToPlay"
+        android:name="com.example.matchinggamebeta.HowToPlay"
+        android:label="fragment_how_to_play"
+        tools:layout="@layout/fragment_how_to_play" >
+        <action
+            android:id="@+id/action_howToPlay_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.example.matchinggamebeta.AboutUs"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" >
+        <action
+            android:id="@+id/action_aboutUs_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

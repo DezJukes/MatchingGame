@@ -59,5 +59,10 @@ class popUpScreen : DialogFragment() {
             dismiss()
         }
 
+        playAgainButton.setOnClickListener {
+            findNavController().navigate(R.id.action_SecondFragment_pop)
+            dismiss()
+        }
+
     }
 }

@@ -16,6 +16,7 @@ import android.media.MediaPlayer
 import android.widget.Adapter
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matchinggamebeta.models.BoardSize
@@ -42,6 +43,7 @@ class SecondFragment : Fragment() {
     private var boardSize = BoardSize.EASY
     private var gameFinished = false
     private var isBackgroundMusicPlaying = false
+    private lateinit var homeButton:Button
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -69,10 +71,11 @@ class SecondFragment : Fragment() {
         startTimer(boardSize)
         resetGame = binding.btnReset
         resetGame.setOnClickListener {
-            setupBoard(boardSize)
-            resetGameOverall()
-            countDownTimer.cancel()
-            startTimer(boardSize)
+            resetGame()
+        }
+
+        binding.btnHome2.setOnClickListener {
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
     override fun onResume() {
@@ -85,12 +88,18 @@ class SecondFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if (isBackgroundMusicPlaying) {
+        if (::backgroundMusicPlayer.isInitialized && backgroundMusicPlayer.isPlaying) {
             backgroundMusicPlayer.pause()
             isBackgroundMusicPlaying = false
         }
     }
 
+    private fun resetGame(){
+        setupBoard(boardSize)
+        resetGameOverall()
+        countDownTimer.cancel()
+        startTimer(boardSize)
+    }
     private fun resetGameOverall() {
         flips = 0
         score = 0
@@ -160,7 +169,7 @@ class SecondFragment : Fragment() {
             }
 
             override fun onFinish() {
-                if (backgroundMusicPlayer.isPlaying) {
+                if (::backgroundMusicPlayer.isInitialized && backgroundMusicPlayer.isPlaying) {
                     backgroundMusicPlayer.pause()
                 }
                 gameFinished = true

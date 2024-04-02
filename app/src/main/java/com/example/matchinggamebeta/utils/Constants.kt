@@ -14,12 +14,12 @@ val DEFAULT_ICONS = listOf(
     R.drawable.card_pineapple,
     R.drawable.card_strawberry,
     R.drawable.card_watermelon,
-    R.drawable.card_eggplant,
-    R.drawable.card_flamingo,
-    R.drawable.card_frog,
-    R.drawable.card_panda,
-    R.drawable.card_penguin,
-    R.drawable.card_turtle,
-    R.drawable.card_zebra,
-    R.drawable.question_mark
+    R.drawable.card_coconut,
+    R.drawable.card_dragonfruit,
+    R.drawable.card_durian,
+    R.drawable.card_kiwi,
+    R.drawable.card_papaya,
+    R.drawable.card_pear,
+    R.drawable.card_rambutan,
+    R.drawable.card_raspberry
 )
