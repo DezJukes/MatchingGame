@@ -4,60 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".popUpScreen">
+    tools:context=".popUpScreen"
+    tools:layout_editor_absoluteX="-16dp"
+    tools:layout_editor_absoluteY="246dp">
 
-    <TextView
-        android:id="@+id/tvCongrats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CONGRATS!"
-        android:textAlignment="center"
-        android:textSize="34sp"
+    <include
+        android:id="@+id/include"
+        layout="@layout/fragment_second"
+        android:layout_width="414dp"
+        android:layout_height="733dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/LinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCongrats">
+    <androidx.cardview.widget.CardView
+        android:layout_width="381dp"
+        android:layout_height="489dp"
+        android:foregroundGravity="center"
+        app:cardBackgroundColor="#9C83DD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.677"
+        tools:layout_editor_absoluteX="16dp">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout"
+            android:layout_width="295dp"
+            android:layout_height="401dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:gravity="center|fill_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:text="Score"
+                android:textAlignment="center"
+                android:textSize="60sp"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+            <TextView
+                android:id="@+id/tvTotalScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="48sp"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="311dp" />
+
+            <Button
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="220dp"
+                android:layout_height="77dp"
+                android:text="Play Again?"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="330dp" />
+
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="378dp" />
+
+            <Button
+                android:id="@+id/btnLeaderboard"
+                android:layout_width="172dp"
+                android:layout_height="wrap_content"
+                android:text="Leaderboard" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tvScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Score"
-            android:textAlignment="center" />
+            android:id="@+id/tvCongrats"
+            android:layout_width="287dp"
+            android:layout_height="93dp"
+            android:text="CONGRATS!"
+            android:textAlignment="center"
+            android:textSize="34sp" />
 
-        <TextView
-            android:id="@+id/tvTotalScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/btnPlayAgain"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Play Again?" />
-
-        <Button
-            android:id="@+id/btnHome"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Home" />
-
-        <Button
-            android:id="@+id/btnLeaderboard"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Leaderboard" />
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
