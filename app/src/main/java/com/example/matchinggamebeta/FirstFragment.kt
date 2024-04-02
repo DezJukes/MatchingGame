@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
 import com.example.matchinggamebeta.databinding.FragmentFirstBinding
 import kotlin.system.exitProcess
@@ -19,6 +21,8 @@ class FirstFragment : Fragment() {
     private lateinit var backgroundMusicPlayer: MediaPlayer
     private lateinit var buttonSoundClick: MediaPlayer
     private var isBackgroundMusicPlaying = false
+    private lateinit var settingsButton:ImageButton
+    private lateinit var aboutUsButton:Button
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,9 +50,24 @@ class FirstFragment : Fragment() {
             buttonSoundClick.start()
             findNavController().navigate(R.id.action_FirstFragment_to_levelSelect)
         }
+
         binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_howToPlay)
+        }
+
+        binding.buttonThird.setOnClickListener {
             buttonSoundClick.start()
             exitProcess(0)
+        }
+
+        settingsButton = view.findViewById(R.id.btnSettings)
+        settingsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_leaderboard)
+        }
+
+        aboutUsButton = view.findViewById(R.id.btnAboutUs)
+        aboutUsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_aboutUs)
         }
     }
     override fun onResume() {

@@ -7,17 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
+import com.example.matchinggamebeta.databinding.FragmentFirstBinding
+import com.example.matchinggamebeta.databinding.FragmentLevelSelectBinding
 import com.example.matchinggamebeta.models.BoardSize
 import com.google.android.material.textfield.TextInputEditText
 
 
 class LevelSelect : Fragment() {
+    private var _binding: FragmentLevelSelectBinding? = null
     private lateinit var selectEasy:Button
     private lateinit var selectMedium:Button
     private lateinit var selectDifficult:Button
     private lateinit var txtFieldUsername: TextInputEditText
     private var username: String = ""
+    private lateinit var homeButton: ImageButton
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +55,10 @@ class LevelSelect : Fragment() {
         val saveButton: Button = view.findViewById(R.id.btnSave)
         saveButton.setOnClickListener {
             username = txtFieldUsername.text.toString()
+        }
+        homeButton = view.findViewById(R.id.btnHome1)
+        homeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_levelSelect_to_FirstFragment)
         }
     }
 
