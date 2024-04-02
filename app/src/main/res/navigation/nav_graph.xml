@@ -21,11 +21,14 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
         <action
-            android:id="@+id/action_SecondFragment_to_leaderboard"
-            app:destination="@id/leaderboard" />
-        <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_popUpScreen"
+            app:destination="@id/popUpScreen" />
+        <action
+            android:id="@+id/action_SecondFragment_to_leaderboard"
+            app:destination="@id/leaderboard" />
     </fragment>
     <fragment
         android:id="@+id/levelSelect"
@@ -40,7 +43,11 @@
         android:id="@+id/popUpScreen"
         android:name="com.example.matchinggamebeta.popUpScreen"
         android:label="fragment_pop_up_screen"
-        tools:layout="@layout/fragment_pop_up_screen" />
+        tools:layout="@layout/fragment_pop_up_screen" >
+        <action
+            android:id="@+id/action_popUpScreen_to_leaderboard"
+            app:destination="@id/leaderboard" />
+    </dialog>
     <fragment
         android:id="@+id/leaderboard"
         android:name="com.example.matchinggamebeta.Leaderboard"

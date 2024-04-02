@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +17,7 @@
             android:layout_width="363dp"
             android:layout_height="207dp"
             android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#FF0000"
+            android:shadowColor="#30254E"
             android:shadowDx="15"
             android:shadowDy="20"
             android:shadowRadius="30"
@@ -30,34 +30,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.268" />
+            app:layout_constraintVertical_bias="0.204" />
 
         <Button
             android:id="@+id/button_first"
             android:layout_width="242dp"
             android:layout_height="70dp"
-            android:layout_marginTop="348dp"
+            android:layout_marginTop="356dp"
             android:fontFamily="@font/kavoonregular"
             android:text="PLAY"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button_Third"
-            android:layout_width="174dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="500dp"
-            android:fontFamily="@font/kavoonregular"
-            android:text="Exit"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,23 +51,39 @@
             android:id="@+id/button_second"
             android:layout_width="197dp"
             android:layout_height="60dp"
-            android:layout_marginTop="428dp"
+            android:layout_marginTop="436dp"
             android:fontFamily="@font/kavoonregular"
             android:text="HOW TO PLAY"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_Third"
+            android:layout_width="174dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="508dp"
+            android:fontFamily="@font/kavoonregular"
+            android:text="Exit"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="180dp"
-            android:layout_height="43dp"
+            android:layout_width="177dp"
+            android:layout_height="81dp"
             android:layout_marginTop="110dp"
             android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#FF0000"
+            android:shadowColor="#30254E"
             android:shadowDx="15"
             android:shadowDy="10"
             android:shadowRadius="50"
