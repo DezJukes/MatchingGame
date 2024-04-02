@@ -69,10 +69,7 @@ class SecondFragment : Fragment() {
         startTimer(boardSize)
         resetGame = binding.btnReset
         resetGame.setOnClickListener {
-            setupBoard(boardSize)
-            resetGameOverall()
-            countDownTimer.cancel()
-            startTimer(boardSize)
+            resetGame()
         }
     }
     override fun onResume() {
@@ -91,6 +88,12 @@ class SecondFragment : Fragment() {
         }
     }
 
+    private fun resetGame(){
+        setupBoard(boardSize)
+        resetGameOverall()
+        countDownTimer.cancel()
+        startTimer(boardSize)
+    }
     private fun resetGameOverall() {
         flips = 0
         score = 0
