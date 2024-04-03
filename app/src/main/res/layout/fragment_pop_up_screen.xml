@@ -8,79 +8,117 @@
     tools:layout_editor_absoluteX="-16dp"
     tools:layout_editor_absoluteY="246dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvCongrats"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="381dp"
-        android:layout_height="489dp"
-        android:foregroundGravity="center"
-        app:cardBackgroundColor="#9C83DD"
+        android:layout_height="592dp"
+        android:background="#00A500F1"
+        android:src="@drawable/popupframe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <LinearLayout
-            android:id="@+id/LinearLayout"
-            android:layout_width="295dp"
-            android:layout_height="401dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:gravity="center|fill_vertical"
-            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="300dp"
+        android:layout_height="378dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="58dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.593">
 
-            <TextView
-                android:id="@+id/tvCongrats"
-                android:layout_width="287dp"
-                android:layout_height="93dp"
-                android:text="CONGRATS!"
-                android:textAlignment="center"
-                android:textSize="34sp" />
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#A500F1"
+            android:shadowDx="15"
+            android:shadowDy="20"
+            android:shadowRadius="30"
+            android:text="Score"
+            android:textAlignment="center"
+            android:textColor="#E4E3E6"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="291dp" />
 
-            <TextView
-                android:id="@+id/tvScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:text="Score"
-                android:textAlignment="center"
-                android:textSize="60sp"
-                tools:layout_editor_absoluteX="-16dp"
-                tools:layout_editor_absoluteY="291dp" />
+        <TextView
+            android:id="@+id/tvTotalScore"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#A500F1"
+            android:shadowDx="15"
+            android:shadowDy="20"
+            android:shadowRadius="30"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="#E4E3E6"
+            android:textSize="70sp"
+            android:textStyle="bold"
+             />
 
-            <TextView
-                android:id="@+id/tvTotalScore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textAlignment="center"
-                android:textSize="48sp"
-                tools:layout_editor_absoluteX="-16dp"
-                tools:layout_editor_absoluteY="311dp" />
+        <Button
+            android:id="@+id/btnPlayAgain"
+            android:layout_width="235dp"
+            android:layout_height="65dp"
+            android:fontFamily="@font/kavoonregular"
+            android:text="Play Again?"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="330dp" />
 
-            <Button
-                android:id="@+id/btnPlayAgain"
-                android:layout_width="220dp"
-                android:layout_height="77dp"
-                android:text="Play Again?"
-                tools:layout_editor_absoluteX="90dp"
-                tools:layout_editor_absoluteY="330dp" />
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kavoonregular"
+            android:text="Home"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="378dp" />
 
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                tools:layout_editor_absoluteX="90dp"
-                tools:layout_editor_absoluteY="378dp" />
+        <Button
+            android:id="@+id/btnLeaderboard"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kavoonregular"
+            android:text="Leaderboard"
+            android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/btnLeaderboard"
-                android:layout_width="172dp"
-                android:layout_height="wrap_content"
-                android:text="Leaderboard" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/tvCongrats"
+        android:layout_width="287dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="75dp"
+        android:fontFamily="@font/kavoonregular"
+        android:shadowColor="#A500F1"
+        android:shadowDx="15"
+        android:shadowDy="20"
+        android:shadowRadius="30"
+        android:text="Congrats!"
+        android:textAlignment="center"
+        android:textColor="#E4E3E6"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.161" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
