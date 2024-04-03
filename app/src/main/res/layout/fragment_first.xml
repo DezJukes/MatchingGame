@@ -17,7 +17,7 @@
             android:layout_width="363dp"
             android:layout_height="207dp"
             android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#FF0000"
+            android:shadowColor="#A500F1"
             android:shadowDx="15"
             android:shadowDy="20"
             android:shadowRadius="30"
@@ -28,36 +28,23 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.268" />
-
-        <Button
-            android:id="@+id/button_first"
-            android:layout_width="242dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="348dp"
-            android:fontFamily="@font/kavoonregular"
-            android:text="PLAY"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="0.27" />
 
         <Button
             android:id="@+id/button_Third"
             android:layout_width="174dp"
             android:layout_height="46dp"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="560dp"
             android:fontFamily="@font/kavoonregular"
             android:text="Exit"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,24 +52,39 @@
             android:id="@+id/button_second"
             android:layout_width="197dp"
             android:layout_height="60dp"
-            android:layout_marginTop="428dp"
+            android:layout_marginTop="492dp"
             android:fontFamily="@font/kavoonregular"
             android:text="HOW TO PLAY"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/button_first"
+            android:layout_width="242dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="408dp"
+            android:fontFamily="@font/kavoonregular"
+            android:text="PLAY"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageButton
             android:id="@+id/btnSettings"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             android:background="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ico_settings"
@@ -91,21 +93,19 @@
 
         <Button
             android:id="@+id/btnAboutUs"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="150dp"
-            android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#FF0000"
-            android:shadowDx="15"
-            android:shadowDy="10"
-            android:shadowRadius="50"
-            android:text="About Us"
+            android:layout_width="143dp"
+            android:layout_height="55dp"
             android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            android:textSize="30sp"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#8804C6"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="30"
+            android:text="About Us"
+            android:textColor="#E4B8F8"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_Third"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
