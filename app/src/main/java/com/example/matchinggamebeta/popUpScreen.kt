@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 
@@ -16,6 +18,7 @@ class popUpScreen : DialogFragment() {
     private lateinit var playAgainButton:Button
     private lateinit var homeButton:Button
     private lateinit var leaderboardButton:Button
+    private lateinit var imageView:ImageView
 
     companion object {
         const val ARG_SCORE = "arg_score"
@@ -37,6 +40,8 @@ class popUpScreen : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        imageView = view.findViewById(R.id.imageView)
+        imageView.setBackgroundColor(resources.getColor(android.R.color.transparent));
 
         arguments?.let {
             // Retrieve the score argument

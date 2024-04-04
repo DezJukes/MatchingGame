@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:visibility="visible"
     tools:context=".popUpScreen"
     tools:layout_editor_absoluteX="-16dp"
     tools:layout_editor_absoluteY="246dp">
@@ -12,7 +14,8 @@
         android:id="@+id/imageView"
         android:layout_width="381dp"
         android:layout_height="592dp"
-        android:background="#00A500F1"
+        android:background="@android:color/transparent"
+        android:foreground="@android:color/transparent"
         android:src="@drawable/popupframe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +42,7 @@
         <TextView
             android:id="@+id/tvScore"
             android:layout_width="239dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:baselineAligned="false"
             android:fontFamily="@font/kavoonregular"
             android:shadowColor="#A500F1"
@@ -57,8 +60,10 @@
         <TextView
             android:id="@+id/tvTotalScore"
             android:layout_width="233dp"
-            android:layout_height="wrap_content"
+            android:layout_height="110dp"
             android:fontFamily="@font/kavoonregular"
+            android:layout_marginTop="-40dp"
+            android:layout_marginBottom="15dp"
             android:shadowColor="#A500F1"
             android:shadowDx="15"
             android:shadowDy="20"
@@ -67,8 +72,7 @@
             android:textAlignment="center"
             android:textColor="#E4E3E6"
             android:textSize="70sp"
-            android:textStyle="bold"
-             />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnPlayAgain"
