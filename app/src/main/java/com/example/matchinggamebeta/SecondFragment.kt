@@ -94,7 +94,7 @@ class SecondFragment : Fragment() {
         }
     }
 
-    private fun resetGame(){
+     fun resetGame(){
         setupBoard(boardSize)
         resetGameOverall()
         countDownTimer.cancel()
@@ -174,7 +174,7 @@ class SecondFragment : Fragment() {
                 }
                 gameFinished = true
                 playGameCompletedSound()
-                val showPopUp = popUpScreen()
+                val showPopUp = popUpScreen(this@SecondFragment)
 
                 val args = Bundle()
                 args.putInt(popUpScreen.ARG_SCORE, score) // Pass the score here

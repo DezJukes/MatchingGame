@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 
 
-class popUpScreen : DialogFragment() {
+class popUpScreen(private val secondFragment: SecondFragment) : DialogFragment() {
     private lateinit var totalScore:TextView
     private lateinit var playAgainButton:Button
     private lateinit var homeButton:Button
@@ -65,7 +65,7 @@ class popUpScreen : DialogFragment() {
         }
 
         playAgainButton.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_pop)
+            secondFragment.resetGame()
             dismiss()
         }
 
