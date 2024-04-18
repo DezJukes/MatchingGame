@@ -1,5 +1,6 @@
 package com.example.matchinggamebeta
 
+import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -41,8 +42,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        backgroundMusicPlayer = MediaPlayer.create(requireContext(), R.raw.bgm_menu1)
-        backgroundMusicPlayer.isLooping = true // Loop the music
+        //backgroundMusicPlayer = MediaPlayer.create(requireContext(), R.raw.bgm_menu1)
+        //backgroundMusicPlayer.isLooping = true // Loop the music
 
         buttonSoundClick = MediaPlayer.create(requireContext(), R.raw.press)
 
@@ -72,23 +73,14 @@ class FirstFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
-        if (!isBackgroundMusicPlaying) {
-            backgroundMusicPlayer.start()
-            isBackgroundMusicPlaying = true
+        val sharedPreferences = requireActivity().getSharedPreferences("SwitchState", Context.MODE_PRIVATE)
+        if (sharedPreferences.getBoolean("switch_state", false)) {
+            (activity as MainActivity).startBackgroundMusic()
         }
     }
 
     override fun onPause() {
         super.onPause()
-        if (isBackgroundMusicPlaying) {
-            backgroundMusicPlayer.pause()
-            isBackgroundMusicPlaying = false
-        }
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-        backgroundMusicPlayer.release()
-        buttonSoundClick.release()
+
     }
 }

@@ -1,6 +1,9 @@
 package com.example.matchinggamebeta
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -17,12 +20,24 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var backgroundMusicPlayer: MediaPlayer
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE)
+
+        backgroundMusicPlayer = MediaPlayer.create(this, R.raw.bgm_menu1)
+        backgroundMusicPlayer.isLooping = true // Loop the music
+        if (sharedPreferences.getBoolean("switch_state", false)) {
+            startBackgroundMusic()
+        } else {
+            stopBackgroundMusic()
+        }
         //val toolbar: Toolbar = findViewById(R.id.toolbar)
         //toolbar.setTitleTextColor(Color.WHITE)
         //setSupportActionBar(binding.toolbar)
@@ -31,6 +46,27 @@ class MainActivity : AppCompatActivity() {
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
+    }
+    override fun onPause() {
+        super.onPause()
+
+    }
+    fun startBackgroundMusic() {
+        if (!backgroundMusicPlayer.isPlaying) {
+            backgroundMusicPlayer.seekTo(0)
+            backgroundMusicPlayer.start()
+        }
+    }
+
+    fun stopBackgroundMusic() {
+        if (backgroundMusicPlayer.isPlaying) {
+            backgroundMusicPlayer.pause()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backgroundMusicPlayer.release()
     }
 /*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
