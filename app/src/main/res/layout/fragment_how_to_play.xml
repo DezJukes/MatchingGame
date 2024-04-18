@@ -12,27 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/LinearLayout1"
+        <TextView
+            android:id="@+id/tvInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/LinearLayout1" />
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#8804C6"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="30"
+            android:text="How To Play"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="65dp" />
 
         <ImageButton
             android:id="@+id/btnHowToHome"
@@ -40,21 +34,20 @@
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ico_home"
-            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="How To Play"
-            android:textAlignment="center"
-            android:textSize="34sp"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="45dp" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="373dp"
+            android:layout_height="597dp"
+            android:src="@drawable/HTP1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="118dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
