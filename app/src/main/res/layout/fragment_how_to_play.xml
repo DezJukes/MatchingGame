@@ -12,22 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#8804C6"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="30"
-            android:text="How To Play"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="44dp" />
-
         <ImageButton
             android:id="@+id/btnHowToHome"
             android:layout_width="50dp"
@@ -40,14 +24,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="398dp"
+            android:layout_height="112dp"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#9E1EDA"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="30"
+            android:text="How To Play"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnHowToHome" />
+
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="373dp"
-            android:layout_height="597dp"
-            android:src="@drawable/HTP1"
+            android:layout_width="435dp"
+            android:layout_height="698dp"
+            android:src="@drawable/hpt1"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="134dp" />
+            app:layout_constraintTop_toBottomOf="@+id/tvInstructions" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="435dp"
+            android:layout_height="698dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/hpt2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
