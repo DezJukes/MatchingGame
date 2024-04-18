@@ -43,12 +43,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtFieldUsername"
-                    android:layout_width="313dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corners"
                     android:fontFamily="@font/kavoonregular"
-                    android:textColorHint="#80E4B8F8"
-                    android:hint="Username" />
+                    android:hint="Username"
+                    android:textColorHint="#80E4B8F8" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
