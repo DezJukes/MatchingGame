@@ -25,8 +25,8 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="65dp" />
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="44dp" />
 
         <ImageButton
             android:id="@+id/btnHowToHome"
@@ -47,7 +47,7 @@
             android:src="@drawable/HTP1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="118dp" />
+            tools:layout_editor_absoluteY="134dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
