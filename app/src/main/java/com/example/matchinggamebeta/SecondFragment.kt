@@ -12,6 +12,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import com.example.matchinggamebeta.databinding.FragmentSecondBinding
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.widget.Adapter
 import android.widget.Button
@@ -44,6 +46,8 @@ class SecondFragment : Fragment() {
     private var gameFinished = false
     private var isBackgroundMusicPlaying = false
     private lateinit var homeButton:Button
+
+    private lateinit var sharedPreferences: SharedPreferences
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -73,16 +77,20 @@ class SecondFragment : Fragment() {
         resetGame.setOnClickListener {
             resetGame()
         }
-
+        (activity as MainActivity).stopBackgroundMusic()
+        sharedPreferences = requireActivity().getSharedPreferences("SwitchState", Context.MODE_PRIVATE)
+        if (sharedPreferences.getBoolean("switch_state", false)) {
+            startBackgroundMusic()
+        }
         binding.btnHome2.setOnClickListener {
+            countDownTimer.cancel()
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
     override fun onResume() {
         super.onResume()
-        if (!isBackgroundMusicPlaying) {
-            backgroundMusicPlayer.start()
-            isBackgroundMusicPlaying = true
+        if (sharedPreferences.getBoolean("switch_state", false) && !isBackgroundMusicPlaying) {
+            startBackgroundMusic()
         }
     }
 
@@ -99,6 +107,9 @@ class SecondFragment : Fragment() {
         resetGameOverall()
         countDownTimer.cancel()
         startTimer(boardSize)
+         if (sharedPreferences.getBoolean("switch_state", false) && !isBackgroundMusicPlaying) {
+             startBackgroundMusic()
+         }
     }
     private fun resetGameOverall() {
         flips = 0
@@ -169,11 +180,15 @@ class SecondFragment : Fragment() {
             }
 
             override fun onFinish() {
-                if (::backgroundMusicPlayer.isInitialized && backgroundMusicPlayer.isPlaying) {
-                    backgroundMusicPlayer.pause()
-                }
                 gameFinished = true
                 playGameCompletedSound()
+
+                if (::backgroundMusicPlayer.isInitialized && backgroundMusicPlayer.isPlaying) {
+                    backgroundMusicPlayer.pause()
+                    backgroundMusicPlayer.seekTo(0)
+                    isBackgroundMusicPlaying = false
+                }
+
                 val showPopUp = popUpScreen(this@SecondFragment)
 
                 val args = Bundle()
@@ -191,6 +206,7 @@ class SecondFragment : Fragment() {
         // Release MediaPlayer resources when the fragment is destroyed
         backgroundMusicPlayer.release()
         cardClickSoundPlayer.release()
+        countDownTimer.cancel()
     }
 
     private fun playCardClickSound() {
@@ -204,6 +220,20 @@ class SecondFragment : Fragment() {
 
         gameCompletedSoundPlayer.setOnCompletionListener { mediaPlayer ->
             mediaPlayer.release()
+        }
+    }
+
+    private fun startBackgroundMusic() {
+        if (!backgroundMusicPlayer.isPlaying) {
+            backgroundMusicPlayer.start()
+            isBackgroundMusicPlaying = true
+        }
+    }
+
+    private fun stopBackgroundMusic() {
+        if (backgroundMusicPlayer.isPlaying) {
+            backgroundMusicPlayer.pause()
+            isBackgroundMusicPlaying = false
         }
     }
 

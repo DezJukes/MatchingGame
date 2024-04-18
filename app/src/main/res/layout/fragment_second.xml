@@ -16,7 +16,7 @@
             android:id="@+id/textview_second"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/kavoonregular"
             android:shadowColor="#8804C6 "
             android:shadowDx="10"
@@ -30,11 +30,10 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/textview_second">
 
@@ -42,71 +41,93 @@
                 android:id="@+id/textFlips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:fontFamily="@font/kavoonregular"
                 android:shadowColor="#8804C6"
                 android:shadowDx="3"
                 android:shadowDy="3"
                 android:shadowRadius="5"
-                android:text="Flips:"
-                android:textColor="#FEFEFE" />
+                android:text="Flip"
+                android:textSize="15sp"
+                android:textColor="#FEFEFE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textScore"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textFlipsCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/kavoonregular"
                 android:text="0"
+                android:textSize="30sp"
                 android:textColor="#FEFEFE"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/textScore"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:fontFamily="@font/kavoonregular"
                 android:shadowColor="#8804C6"
                 android:shadowDx="3"
                 android:shadowDy="3"
                 android:shadowRadius="5"
-                android:text="Score:"
-                android:textColor="#FEFEFE" />
+                android:text="Score"
+                android:textSize="15sp"
+                android:textColor="#FEFEFE"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textScoreCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:fontFamily="@font/kavoonregular"
                 android:text="0"
                 android:textColor="#FEFEFE"
-                android:textStyle="bold" />
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/textTimer"
+                app:layout_constraintStart_toEndOf="@id/textFlips"
+                app:layout_constraintTop_toBottomOf="@id/textScore" />
 
             <TextView
                 android:id="@+id/textTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:fontFamily="@font/kavoonregular"
                 android:shadowColor="#8804C6"
                 android:shadowDx="3"
                 android:shadowDy="3"
                 android:shadowRadius="5"
-                android:text="Time:"
-                android:textColor="#FEFEFE" />
+                android:textSize="15sp"
+                android:text="Time"
+                android:textColor="#FEFEFE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textScore"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textTimerCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:fontFamily="@font/kavoonregular"
                 android:text="00:00"
+                android:textSize="30sp"
                 android:textColor="#FEFEFE"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/textTimer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textScore"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBoard"
