@@ -20,6 +20,9 @@ class popUpScreen(private val secondFragment: SecondFragment) : DialogFragment()
     private lateinit var leaderboardButton:Button
     private lateinit var imageView:ImageView
 
+
+
+
     companion object {
         const val ARG_SCORE = "arg_score"
     }
@@ -41,7 +44,6 @@ class popUpScreen(private val secondFragment: SecondFragment) : DialogFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         imageView = view.findViewById(R.id.imageView)
-        imageView.setBackgroundColor(resources.getColor(android.R.color.transparent));
 
         arguments?.let {
             // Retrieve the score argument
