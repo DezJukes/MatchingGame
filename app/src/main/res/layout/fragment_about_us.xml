@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grassbg"
     tools:context=".AboutUs">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,11 +16,12 @@
             android:id="@+id/tvAbousUs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="64dp"
             android:text="ABOUT US!"
             android:textAlignment="center"
             android:textSize="60sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -17,7 +17,7 @@
             android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/blur_background"
+            android:background="@drawable/grassbg"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/back_basket"
             android:padding="5dp"/>

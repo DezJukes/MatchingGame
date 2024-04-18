@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gamebg"
+    android:background="@drawable/grassbg"
     tools:context=".HowToPlay">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,13 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvInstructions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="How To Play"
-                android:textAlignment="center"
-                android:textSize="34sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,6 +45,16 @@
             android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How To Play"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="45dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
