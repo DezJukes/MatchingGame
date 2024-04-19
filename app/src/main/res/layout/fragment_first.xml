@@ -81,7 +81,7 @@
             android:shadowDy="5"
             android:shadowRadius="30"
             android:text="About Us"
-            android:textColor="#E4B8F8"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
