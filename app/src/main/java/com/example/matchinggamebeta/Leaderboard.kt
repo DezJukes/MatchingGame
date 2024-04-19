@@ -96,7 +96,7 @@ class Leaderboard : Fragment() {
         tableRow.addView(idTextView)
 
         val playerTextView = TextView(requireContext())
-        playerTextView.text = entry.player.padEnd(10)
+        playerTextView.text = entry.player.padEnd(5)
         playerTextView.gravity = Gravity.CENTER
         playerTextView.setPadding(0, 0, 16, 0) // Adjust padding as needed
         tableRow.addView(playerTextView)
