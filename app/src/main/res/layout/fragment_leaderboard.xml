@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grassbg"
     tools:context=".Leaderboard">
 
     <!-- TODO: Update blank fragment layout -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,32 +23,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvSettings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textAlignment="center"
-                android:textSize="34sp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="379dp"
-            android:layout_height="371dp"
+            android:layout_width="361dp"
+            android:layout_height="473dp"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/switch1">
 
             <TextView
                 android:id="@+id/tvLeaderBoard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/kavoonregular"
+                android:shadowColor="#8804C6"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="30"
                 android:text="Leaderboard"
                 android:textAlignment="center"
-                android:textSize="34sp"
+                android:textColor="@color/white"
+                android:textSize="50sp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="287dp" />
 
@@ -57,32 +59,54 @@
                 android:stretchColumns="1">
 
                 <TableRow>
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/kavoonregular"
+                        android:padding="4dp"
+                        android:shadowColor="#8804C6"
+                        android:shadowDx="5"
+                        android:shadowDy="5"
+                        android:shadowRadius="30"
                         android:text="Rank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:padding="4dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/kavoonregular"
+                        android:padding="4dp"
+                        android:shadowColor="#8804C6"
+                        android:shadowDx="5"
+                        android:shadowDy="5"
+                        android:shadowRadius="30"
                         android:text="Players"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:padding="4dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:text="Highscore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
                         android:layout_gravity="center"
-                        android:padding="4dp"/>
+                        android:fontFamily="@font/kavoonregular"
+                        android:padding="4dp"
+                        android:shadowColor="#8804C6"
+                        android:shadowDx="5"
+                        android:shadowDy="5"
+                        android:shadowRadius="30"
+                        android:text="Highscore"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
@@ -94,22 +118,51 @@
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ico_home"
-            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Background Music"
+            android:layout_width="277dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="28dp"
             android:checked="true"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#8804C6"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="30"
+            android:text="Background Music"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout2" />
+
+        <TextView
+            android:id="@+id/tvSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kavoonregular"
+            android:shadowColor="#8804C6"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="30"
+            android:text="Settings"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="54dp" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="536dp"
+            android:layout_height="556dp"
+            android:src="@drawable/frame" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
