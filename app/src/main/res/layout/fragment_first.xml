@@ -12,27 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textview_first"
-            android:layout_width="363dp"
-            android:layout_height="207dp"
-            android:fontFamily="@font/kavoonregular"
-            android:shadowColor="#A500F1"
-            android:shadowDx="15"
-            android:shadowDy="20"
-            android:shadowRadius="30"
-            android:text="@string/matching_ngame"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="73sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.27" />
-
         <Button
             android:id="@+id/button_Third"
             android:layout_width="174dp"
@@ -107,5 +86,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="356dp"
+            android:layout_height="364dp"
+            android:src="@drawable/logo"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="60dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
