@@ -51,91 +51,40 @@
                 tools:layout_editor_absoluteY="287dp" />
 
             <TableLayout
+                android:id="@+id/tablelayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:stretchColumns="1">
 
                 <TableRow>
+                    <TextView
+                        android:text="Rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:padding="4dp"/>
 
                     <TextView
-                        android:layout_column="1"
-                        android:padding="3dip"
-                        android:text="Open..." />
+                        android:text="Players"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:padding="4dp"/>
 
                     <TextView
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:text="Ctrl-O" />
+                        android:text="Highscore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:padding="4dp"/>
                 </TableRow>
 
-                <TableRow>
-
-                    <TextView
-                        android:layout_column="1"
-                        android:padding="3dip"
-                        android:text="Save..." />
-
-                    <TextView
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:text="Ctrl-S" />
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_column="1"
-                        android:padding="3dip"
-                        android:text="Save As..." />
-
-                    <TextView
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:text="Ctrl-Shift-S" />
-                </TableRow>
-
-                <View
-                    android:layout_height="2dip"
-                    android:background="#FF909090" />
-
-                <TableRow>
-
-                    <TextView
-                        android:padding="3dip"
-                        android:text="X" />
-
-                    <TextView
-                        android:padding="3dip"
-                        android:text="Import..." />
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:padding="3dip"
-                        android:text="X" />
-
-                    <TextView
-                        android:padding="3dip"
-                        android:text="Export..." />
-
-                    <TextView
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:text="Ctrl-E" />
-                </TableRow>
-
-                <View
-                    android:layout_height="2dip"
-                    android:background="#FF909090" />
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_column="1"
-                        android:padding="3dip"
-                        android:text="Quit" />
-                </TableRow>
             </TableLayout>
         </LinearLayout>
 
