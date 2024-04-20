@@ -2,6 +2,7 @@ package com.example.matchinggamebeta
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -93,18 +94,21 @@ class Leaderboard : Fragment() {
         idTextView.text = entry.id.toString().padStart(2)
         idTextView.gravity = Gravity.CENTER
         idTextView.setPadding(0, 0, 16, 0)
+        idTextView.setTextColor(Color.WHITE)
         tableRow.addView(idTextView)
 
         val playerTextView = TextView(requireContext())
         playerTextView.text = entry.player.padEnd(5)
         playerTextView.gravity = Gravity.CENTER
         playerTextView.setPadding(0, 0, 16, 0) // Adjust padding as needed
+        playerTextView.setTextColor(Color.WHITE)
         tableRow.addView(playerTextView)
 
         val highscoreTextView = TextView(requireContext())
         highscoreTextView.text = entry.highscore.toString()
         highscoreTextView.gravity = Gravity.CENTER
         highscoreTextView.setPadding(0, 0, 16, 0) // Adjust padding as needed
+        highscoreTextView.setTextColor(Color.WHITE)
         tableRow.addView(highscoreTextView)
 
         tableLayout.addView(tableRow)
